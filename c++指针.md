@@ -24,6 +24,46 @@ void* ptr=nullptr;//在c++11中加入的新类型代替null
 int var=8;
 void* ptr=&var;
 ```
-得到变量var的内存地址
+得到变量var的内存地址  
+![alt 图片](photo/01.png)
+查看内存地址
+![ale 图片](photo/02.png)
+为什么不总使用void指针,假设在读取一个数据时
+有一个指向那个数据的指针
+当想要写入或读取这块数据时用逆向指针去访问那块数据
+```
+int var = 8;
+void* ptr = &var;
+*ptr = 10;
+```
+此时会发现报错  
+![alt](photo/03.png)
 
+>报错原因
 
+指针类型为void指针，计算机不知道该写入多少字节的数据  
+代码改为
+```
+int var = 8;
+int* ptr = &var;
+*ptr = 10;
+```
+此时输出var结果为10  
+操作指针改变了变量var的值
+
+>指定数据改变内存的值
+
+```
+char* buffer = new char[8];
+memset(buffer, 0, 8);
+```
+![alt](photo/04.png)
+拿到了八个连续的内存都被设为了0  
+```
+char* buffer = new char[8];//指针 分配了8个char，把内存的开始地址存在一个指针里
+memset(buffer, 0, 8);
+delete[] buffer;
+```
+**指针只是一个存储者内存地址的整数**  
+**指针只是一个存储者内存地址的整数**  
+**指针只是一个存储者内存地址的整数**
