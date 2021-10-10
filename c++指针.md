@@ -15,12 +15,12 @@
 ***
 **void*类型指针**  
 在源码中不关心这个数据到底是什么类型，只想要存放一个地址  
-```
+```c++
 void* ptr=0;
 void* ptr=nullptr;//在c++11中加入的新类型代替null
 ```
 创建了第一个空指针  
-```
+```c++
 int var=8;
 void* ptr=&var;
 ```
@@ -31,7 +31,7 @@ void* ptr=&var;
 为什么不总使用void指针,假设在读取一个数据时
 有一个指向那个数据的指针
 当想要写入或读取这块数据时用逆向指针去访问那块数据
-```
+```c++
 int var = 8;
 void* ptr = &var;
 *ptr = 10;
@@ -43,7 +43,7 @@ void* ptr = &var;
 
 指针类型为void指针，计算机不知道该写入多少字节的数据  
 代码改为
-```
+```c++
 int var = 8;
 int* ptr = &var;
 *ptr = 10;
@@ -53,13 +53,13 @@ int* ptr = &var;
 
 >指定数据改变内存的值
 
-```
+```c++
 char* buffer = new char[8];
 memset(buffer, 0, 8);
 ```
 ![alt](photo/04.png)
 拿到了八个连续的内存都被设为了0  
-```
+```c++
 char* buffer = new char[8];//指针 分配了8个char，把内存的开始地址存在一个指针里
 memset(buffer, 0, 8);
 delete[] buffer;
