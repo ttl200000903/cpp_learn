@@ -88,3 +88,53 @@ void Move(Player& player,int xa,int ya)
 	player.Playery += ya * player.Playerspeed;
 }
 ```
+调用此函数  
+```cpp
+int main()
+{
+	Player player;
+	Move(player,1, -1);
+	std::cin.get();
+}
+```
+更好的做法  
+类里面可以包含函数，可以将Move函数写进类里  
+**类内函数称作方法**  
+
+>将Move函数写进类里
+
+
+
+```cpp
+class Player
+{
+public:
+	int Playerx, Playery;
+	int Playerspeed;
+
+	void Move(int xa, int ya)
+	{
+		Playerx += xa * Playerspeed;
+		Playery += ya * Playerspeed;
+	}
+};
+
+void Move(Player& player,int xa,int ya)
+{
+	player.Playerx += xa * player.Playerspeed;
+	player.Playery += ya * player.Playerspeed;
+}
+
+int main()
+{
+	Player player;
+	Move(player,1, -1);
+	player.Move(1, 1);
+	std::cin.get();
+}
+```
+现在访问变量不需要传递player对象，已经在player类内了  
+main函数只需要player.move()  
+
+### 总结
+**类就是使我们能对变量进行组织，变成一个类型，还为这些变量添加了函数
