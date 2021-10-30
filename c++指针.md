@@ -46,6 +46,7 @@ int var = 8;
 void* ptr = &var;
 *ptr = 10;
 ```
+
 此时会发现报错  
 ![alt](photo/03.png)
 
@@ -53,11 +54,13 @@ void* ptr = &var;
 
 指针类型为void指针，计算机不知道该写入多少字节的数据  
 代码改为
+
 ```c++
 int var = 8;
 int* ptr = &var;
 *ptr = 10;
 ```
+
 此时输出var结果为10  
 操作指针改变了变量var的值
 
@@ -67,8 +70,9 @@ int* ptr = &var;
 char* buffer = new char[8];
 memset(buffer, 0, 8);
 ```
+
 ![alt](photo/04.png)
-拿到了八个连续的内存都被设为了0  
+拿到了八个连续的内存都被设为了0
 
 ```c++
 char* buffer = new char[8];//指针 分配了8个char，把内存的开始地址存在一个指针里
